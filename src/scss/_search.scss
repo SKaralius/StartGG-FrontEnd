@@ -1,0 +1,17 @@
+.search {
+  height: 25vh;
+  width: 100%;
+  background-color: orange;
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-options {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+}
