@@ -3,7 +3,6 @@ import useGetRedditFrontPage from "../util/useGetRedditFrontpage";
 
 function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
   const posts: any = useGetRedditFrontPage();
-  console.log(posts?.data?.children[0].data);
   return posts.data ? (
     <div className="preview reddit">
       <div>

@@ -5,24 +5,20 @@ import Search from "./previews/Search";
 import { WEBSITES } from "./util/constants";
 
 function App() {
-  const [moreLoaded, setMoreLoaded] = useState<boolean>(false);
-  function handleLoadMore() {
-    setMoreLoaded(!moreLoaded);
-  }
   return (
     <div className="App">
       <div className="previews">
         <PreviewContainer
           website={WEBSITES.REDDIT}
-          handleLoadMore={handleLoadMore}
+          handleLoadMore={() => console.log("clicked")}
         />
         <PreviewContainer
           website={WEBSITES.YOUTUBE}
-          handleLoadMore={handleLoadMore}
+          handleLoadMore={() => console.log("clicked")}
         />
         <PreviewContainer
           website={WEBSITES.WIKIPEDIA}
-          handleLoadMore={handleLoadMore}
+          handleLoadMore={() => console.log("clicked")}
         />
       </div>
       <Search />

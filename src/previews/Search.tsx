@@ -13,6 +13,7 @@ function Search() {
     { text: button2, selected: false },
     { text: button3, selected: false },
   ]);
+  const [searchForImages, setSearchForImages] = useState(false);
   const searchField = useRef<HTMLInputElement>(null);
   // strict null checks need us to check if searchField and current exist.
   const onKeyClick = () => {
@@ -79,6 +80,12 @@ function Search() {
         >
           {button3}
         </button>
+        <button
+          className={`${searchForImages ? "selected" : ""}`}
+          onClick={() => setSearchForImages(!searchForImages)}
+        >
+          Search For Images
+        </button>
       </div>
       <form
         onSubmit={(e) => {
@@ -86,7 +93,7 @@ function Search() {
           // "site:reddit.com+OR+site:qoura.com+";
           window.location.href = `https://www.google.com/search?q=${getDesiredWebsites()}${
             searchField?.current?.value
-          }`;
+          }${searchForImages ? "&tbm=isch" : ""}`;
         }}
       >
         <input type="text" onClick={onKeyClick} ref={searchField} />
