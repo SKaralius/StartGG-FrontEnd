@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import Reddit from "../src/previews/Reddit";
-import Wikipedia from "../src/previews/Wikipedia";
-import Youtube from "../src/previews/Youtube";
-import Search from "../src/previews/Search";
+import PreviewContainer from "./previews/PreviewsContainer";
 import "./scss/App.scss";
+import Search from "./previews/Search";
+import { WEBSITES } from "./util/constants";
 
 function App() {
   const [moreLoaded, setMoreLoaded] = useState<boolean>(false);
@@ -13,16 +12,18 @@ function App() {
   return (
     <div className="App">
       <div className="previews">
-        <Youtube />
-        <Reddit />
-        <Wikipedia handleLoadMore={handleLoadMore} />
-        {moreLoaded ? (
-          <div>
-            <Youtube />
-            <Reddit />
-            <Wikipedia handleLoadMore={handleLoadMore} />
-          </div>
-        ) : null}
+        <PreviewContainer
+          website={WEBSITES.REDDIT}
+          handleLoadMore={handleLoadMore}
+        />
+        <PreviewContainer
+          website={WEBSITES.YOUTUBE}
+          handleLoadMore={handleLoadMore}
+        />
+        <PreviewContainer
+          website={WEBSITES.WIKIPEDIA}
+          handleLoadMore={handleLoadMore}
+        />
       </div>
       <Search />
     </div>

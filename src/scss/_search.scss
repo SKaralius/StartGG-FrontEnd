@@ -1,5 +1,5 @@
 .search {
-  height: 25vh;
+  height: 25%;
   width: 100%;
   background-color: orange;
   margin-top: auto;
@@ -14,4 +14,14 @@
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
+}
+
+.search-options > button {
+  background-color: "#ff55ff";
+  border: 3px outset white;
+}
+
+.selected {
+  background-color: blue;
+  border: 3px outset white;
 }
