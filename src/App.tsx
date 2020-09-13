@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PreviewContainer from "./previews/PreviewsContainer";
 import "./scss/App.scss";
 import Search from "./previews/Search";
