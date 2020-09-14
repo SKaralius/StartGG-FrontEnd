@@ -12,14 +12,10 @@ function App() {
           website={WEBSITES.REDDIT}
           handleLoadMore={() => console.log("clicked")}
         />
-        <PreviewContainer
+        {/* <PreviewContainer
           website={WEBSITES.YOUTUBE}
           handleLoadMore={() => console.log("clicked")}
-        />
-        <PreviewContainer
-          website={WEBSITES.WIKIPEDIA}
-          handleLoadMore={() => console.log("clicked")}
-        />
+        /> */}
       </div>
       <Search />
     </div>

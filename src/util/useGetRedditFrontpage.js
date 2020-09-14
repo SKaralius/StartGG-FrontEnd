@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useGetRedditFrontPage() {
-  const [redditPosts, setRedditPosts] = useState({});
+  const [redditPosts, setRedditPosts] = useState(false);
   async function getPosts() {
     try {
       const response = await window.fetch(

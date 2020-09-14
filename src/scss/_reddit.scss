@@ -1,3 +1,51 @@
 .reddit {
-  background-color: orange;
+  height: 40vh;
+  padding-bottom: 2rem;
+}
+
+.reddit-more {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: red;
+}
+
+.reddit-upvotes {
+  margin: 1rem 0;
+}
+
+.reddit-post {
+  box-sizing: border-box;
+  border: rgb(202, 202, 185) 3px solid;
+  margin: 0;
+  background-color: #f5f0df;
+  list-style-type: none;
+  padding: 0 0.5rem;
+  height: auto;
+}
+
+.reddit-img-and-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.reddit-img-and-subreddit {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.reddit-link-img {
+  & > img {
+    width: 7rem;
+    display: inline-block;
+  }
+}
+
+.reddit-link-title {
+  text-decoration: none;
+  & > p {
+    padding: 0 1rem;
+  }
 }
