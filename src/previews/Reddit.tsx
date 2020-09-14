@@ -1,10 +1,11 @@
 import React from "react";
-import useGetRedditFrontPage from "../util/useGetRedditFrontpage";
+import useGetData from "../util/useGetData";
+import { getRedditFrontPage } from "../util/api";
 
 function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
   // Sends a request to the server
   // Returns false before the reponse
-  const posts: any = useGetRedditFrontPage();
+  const posts: any = useGetData(getRedditFrontPage);
   interface post {
     data: {
       ups: number;
@@ -73,12 +74,15 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
     });
 
     return (
-      <div className="reddit">
-        <ul className="preview reddit-post">{postCollection}</ul>
-        <button onClick={handleLoadMore} className="reddit-more">
-          MORE
-        </button>
-      </div>
+      <React.Fragment>
+        <div className="reddit-shadow" />
+        <div className="reddit">
+          <ul className="preview reddit-post">{postCollection}</ul>
+          <button onClick={handleLoadMore} className="reddit-more">
+            MORE
+          </button>
+        </div>
+      </React.Fragment>
     );
   } else return null;
 }

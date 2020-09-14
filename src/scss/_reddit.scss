@@ -1,6 +1,18 @@
+.reddit-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 33vh;
+  width: 100%;
+  overflow: hidden;
+
+  box-shadow: inset 0px -40px 40px 0px #cfcbbd;
+  pointer-events: none;
+}
+
 .reddit {
-  height: 40vh;
-  padding-bottom: 2rem;
+  height: 33vh;
+  overflow: hidden;
 }
 
 .reddit-more {
