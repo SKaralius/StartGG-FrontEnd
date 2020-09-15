@@ -4,7 +4,6 @@
   left: 0;
   height: 33vh;
   width: 100%;
-  overflow: hidden;
 
   box-shadow: inset 0px -40px 40px 0px #cfcbbd;
   pointer-events: none;
@@ -12,12 +11,12 @@
 
 .reddit {
   height: 33vh;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .reddit-more {
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
   background-color: red;
 }
@@ -26,7 +25,7 @@
   margin: 1rem 0;
 }
 
-.reddit-post {
+.reddit-posts {
   box-sizing: border-box;
   border: rgb(202, 202, 185) 3px solid;
   margin: 0;
@@ -51,7 +50,6 @@
 .reddit-link-img {
   & > img {
     width: 7rem;
-    display: inline-block;
   }
 }
 

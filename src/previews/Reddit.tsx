@@ -77,7 +77,7 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
       <React.Fragment>
         <div className="reddit-shadow" />
         <div className="reddit">
-          <ul className="preview reddit-post">{postCollection}</ul>
+          <ul className="preview reddit-posts">{postCollection}</ul>
           <button onClick={handleLoadMore} className="reddit-more">
             MORE
           </button>

@@ -88,6 +88,7 @@ function Search() {
         </button>
       </div>
       <form
+        className="search-form-input"
         onSubmit={(e) => {
           e.preventDefault();
           // "site:reddit.com+OR+site:qoura.com+";
@@ -96,7 +97,12 @@ function Search() {
           }${searchForImages ? "&tbm=isch" : ""}`;
         }}
       >
-        <input type="text" onClick={onKeyClick} ref={searchField} />
+        <input
+          placeholder="Search..."
+          type="text"
+          onClick={onKeyClick}
+          ref={searchField}
+        />
       </form>
     </div>
   );
