@@ -31,8 +31,10 @@
   margin: 0;
   background-color: #f5f0df;
   list-style-type: none;
-  padding: 0 0.5rem;
+  padding: 0;
   height: auto;
+
+  padding-left: 0.5rem;
 }
 
 .reddit-img-and-title {
@@ -56,6 +58,6 @@
 .reddit-link-title {
   text-decoration: none;
   & > p {
-    padding: 0 1rem;
+    padding-left: 1rem;
   }
 }

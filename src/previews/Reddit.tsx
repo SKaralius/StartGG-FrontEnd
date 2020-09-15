@@ -33,7 +33,10 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
       } = post.data;
       let thumbnailView = <React.Fragment />;
       switch (true) {
-        case !thumbnail || thumbnail === "default" || thumbnail === "self":
+        case !thumbnail ||
+          thumbnail === "default" ||
+          thumbnail === "self" ||
+          thumbnail === "spoiler":
           break;
         case thumbnail !== "nsfw":
           thumbnailView = (
