@@ -1,63 +1,106 @@
-.reddit-shadow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 33vh;
-  width: 100%;
+$reddit-height: 50vh;
+$reddit-background-color: #f5f0df;
 
-  box-shadow: inset 0px -40px 40px 0px #cfcbbd;
-  pointer-events: none;
-}
+// .reddit-shadow {
+//   height: $reddit-height;
+//   width: 100%;
+
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+
+//   box-shadow: inset 0px -40px 40px 0px #cfcbbd;
+//   pointer-events: none;
+// }
 
 .reddit {
-  height: 33vh;
+  height: $reddit-height;
   overflow: scroll;
+
+  flex-shrink: 0;
+  position: relative;
+}
+
+.reddit-shadow {
+  @include previewShadow;
 }
 
 .reddit-more {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: red;
+  height: 2rem;
+  margin-bottom: 1rem;
+  @include buttonStyle;
+  pointer-events: all;
 }
 
 .reddit-upvotes {
-  margin: 1rem 0;
+  margin: 0rem 0;
+  font-weight: 400;
+  // Arrow
+  & > strong {
+    color: orange;
+  }
 }
 
 .reddit-posts {
-  box-sizing: border-box;
-  border: rgb(202, 202, 185) 3px solid;
+  // Container
+  background-color: $reddit-background-color;
   margin: 0;
-  background-color: #f5f0df;
-  list-style-type: none;
-  padding: 0;
-  height: auto;
 
+  height: auto;
   padding-left: 0.5rem;
+  margin-bottom: -($size-of-shadow - ($size-of-shadow / 100 * 30));
 }
 
 .reddit-img-and-title {
+  // Container
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.reddit-img-and-subreddit {
+.reddit-link-subreddit {
+  //Link
+
+  // Subreddit
+  & > p {
+    margin: 0;
+  }
+}
+
+.reddit-upvotes-and-subreddit {
+  // Container
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  @include buttonStyle;
+  border: 1px darken($button-color, 10) solid;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 
 .reddit-link-img {
+  // Link
+
+  // Image
   & > img {
     width: 7rem;
   }
 }
 
 .reddit-link-title {
+  // Link
   text-decoration: none;
+  // Title
   & > p {
-    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0rem;
+    font-weight: 500;
   }
+}
+
+.reddit-title-with-img {
+  // When a post includes a title and an image
+  // Applies this css to title
+  padding-left: 0.5rem !important;
 }

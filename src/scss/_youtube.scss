@@ -1,10 +1,15 @@
 .youtube {
-  height: 0;
+  flex: 1;
+  overflow: scroll;
+  position: relative;
 }
 
 .youtube-posts {
   list-style-type: none;
   padding: 0 0.5rem;
+  position: relative;
+
+  margin-bottom: -($size-of-shadow - ($size-of-shadow / 100 * 30));
 }
 
 .youtube-link-img {
@@ -12,6 +17,17 @@
   & > img {
     width: 112px;
   }
+}
+
+.youtube-shadow {
+  @include previewShadow;
+}
+
+.youtube-more {
+  height: 2rem;
+  margin-bottom: 1rem;
+  @include buttonStyle;
+  pointer-events: all;
 }
 
 .youtube-title {

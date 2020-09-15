@@ -1,7 +1,6 @@
 .search {
   width: 100%;
   background-color: #fffcf0;
-  margin-top: auto;
 
   display: flex;
   flex-direction: column;
@@ -26,9 +25,7 @@
 }
 
 .search-options > button {
-  background-color: #e1e4e2;
-  border-radius: 10px;
-  border: 1px outset white;
+  @include buttonStyle;
 }
 
 .selected {

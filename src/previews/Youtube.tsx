@@ -37,10 +37,12 @@ function Youtube({ handleLoadMore }: { handleLoadMore: () => void }) {
     });
     return (
       <div className="youtube">
-        <ul className="preview youtube-posts">
-          {postCollection}
-          <button onClick={handleLoadMore}>MORE</button>
-        </ul>
+        <ul className="preview youtube-posts">{postCollection}</ul>
+        <div className="youtube-shadow">
+          <button className="youtube-more" onClick={handleLoadMore}>
+            Expand
+          </button>
+        </div>
       </div>
     );
   } else {

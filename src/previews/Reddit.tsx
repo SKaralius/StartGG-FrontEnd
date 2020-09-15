@@ -19,6 +19,7 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
   }
   // If posts received from server
   if (posts) {
+    let hasImage: boolean = false;
     // Map posts to HTML
     const postCollection = posts.data.children.map((post: post) => {
       // Destructure data
@@ -32,6 +33,7 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
         id,
       } = post.data;
       let thumbnailView = <React.Fragment />;
+
       switch (true) {
         case !thumbnail ||
           thumbnail === "default" ||
@@ -44,6 +46,7 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
               <img src={thumbnail} alt={title} />
             </a>
           );
+          hasImage = true;
           break;
         case thumbnail === "nsfw":
           thumbnailView = (
@@ -51,6 +54,7 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
               <strong>NSFW IMG</strong>
             </a>
           );
+          hasImage = true;
       }
       return (
         <li key={id}>
@@ -60,11 +64,14 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
               className="reddit-link-title"
               href={`https://old.reddit.com${permalink}`}
             >
-              <p>{title}</p>
+              <p className={hasImage ? "reddit-title-with-img" : ""}>{title}</p>
             </a>
           </div>
-          <div className="reddit-img-and-subreddit">
-            <strong className="reddit-upvotes">{ups}</strong>
+          <div className="reddit-upvotes-and-subreddit">
+            <p className="reddit-upvotes">
+              <strong>⇧ </strong>
+              {ups}
+            </p>
             <a
               className="reddit-link-subreddit"
               href={`https://old.reddit.com/r/`}
@@ -78,12 +85,14 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
 
     return (
       <React.Fragment>
-        <div className="reddit-shadow" />
+        {/* <div className="reddit-shadow" /> */}
         <div className="reddit">
           <ul className="preview reddit-posts">{postCollection}</ul>
-          <button onClick={handleLoadMore} className="reddit-more">
-            MORE
-          </button>
+          <div className="reddit-shadow">
+            <button onClick={handleLoadMore} className="reddit-more">
+              Expand
+            </button>
+          </div>
         </div>
       </React.Fragment>
     );
