@@ -22,13 +22,7 @@ $reddit-background-color: white;
 }
 
 .reddit-bar {
-  display: flex;
-  justify-content: flex-start;
-  align-content: center;
-  background-color: #1d2535;
-  width: 100%;
-  padding: 0.5rem 0;
-
+  @include contentBar(#1d2535);
   & > a {
     //Link
     & > .reddit-text {
@@ -108,9 +102,6 @@ $reddit-background-color: white;
       font-size: 12px;
     }
   }
-}
-
-.reddit-link-comments {
 }
 
 .reddit-link-img {

@@ -27,3 +27,12 @@ $size-of-shadow: 25vh;
 
   height: $size-of-shadow;
 }
+
+@mixin contentBar($color) {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  background-color: $color;
+  width: 100%;
+  padding: 0.5rem 0;
+}

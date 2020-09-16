@@ -4,6 +4,24 @@
   position: relative;
 }
 
+.youtube-bar {
+  @include contentBar(#282828);
+  // Link
+  & > a {
+    width: 100%;
+    // Icon
+    & > .youtube-icon {
+      margin-left: 2rem;
+    }
+    & > .youtube-text {
+      height: 1.5rem;
+      fill: white;
+      margin-left: -2rem;
+      font-size: 1rem;
+    }
+  }
+}
+
 .youtube-posts {
   list-style-type: none;
   padding: 0 0.5rem;
@@ -37,13 +55,36 @@
 .youtube-post {
   display: grid;
   grid-template-columns: 112px auto;
-  grid-template-rows: auto;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
 
   column-gap: 0.5rem;
 
   grid-template-areas:
-    "image title"
-    "image uploader"
-    "image date"
-    "image duration";
+    "image title title"
+    "image uploader date";
+}
+
+.youtube-channel-title {
+  grid-area: uploader;
+}
+
+.youtube-date {
+  grid-area: date;
+}
+
+.youtube-img-container {
+  grid-area: image;
+  position: relative;
+}
+
+.youtube-duration {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 0.3rem;
+
+  background-color: black;
+  color: white;
+  text-align: center;
 }
