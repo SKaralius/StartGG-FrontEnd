@@ -1,6 +1,6 @@
 .search {
   width: 100%;
-  background-color: #fffcf0;
+  background-color: white;
 
   display: flex;
   flex-direction: column;
@@ -9,17 +9,34 @@
 }
 
 .search-options {
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "prompt tag1 tag3 tag3"
+    ". tag2 tag4 tag5";
+
+  & > span {
+    grid-area: prompt;
+  }
+
+  @for $i from 1 to 7 {
+    button:nth-child(#{$i}) {
+      grid-area: tag#{$i - 1};
+    }
+  }
 }
 
 .search-form-input {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   & > input {
-    width: 80%;
+    width: 75%;
+    margin-bottom: 1rem;
+  }
+  & > svg {
+    align-self: center;
     margin-bottom: 1rem;
   }
 }

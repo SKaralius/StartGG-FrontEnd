@@ -1,5 +1,5 @@
 $reddit-height: 50vh;
-$reddit-background-color: #f5f0df;
+$reddit-background-color: white;
 
 // .reddit-shadow {
 //   height: $reddit-height;
@@ -15,7 +15,7 @@ $reddit-background-color: #f5f0df;
 
 .reddit {
   height: $reddit-height;
-  overflow: scroll;
+  overflow-y: scroll;
 
   flex-shrink: 0;
   position: relative;

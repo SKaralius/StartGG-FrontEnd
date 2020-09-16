@@ -1,17 +1,21 @@
 import React, { useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Search() {
   // Site names
-  const button0 = "site:reddit.com";
-  const button1 = "site:wikipedia.com";
-  const button2 = "site:stackexchange.com";
-  const button3 = "site:quora.com";
+  const button0 = { value: "site:reddit.com", displayName: "Reddit" };
+  const button1 = { value: "site:wikipedia.com", displayName: "Wikipedia" };
+  const button2 = {
+    value: "site:stackexchange.com",
+    displayName: "Stack Exchange",
+  };
+  const button3 = { value: "site:quora.com", displayName: "Quora" };
   // Names are mapped to buttons.
   const [searchInWebsites, setSearchInWebsites] = useState([
-    { text: button0, selected: false },
-    { text: button1, selected: false },
-    { text: button2, selected: false },
-    { text: button3, selected: false },
+    { text: button0.value, selected: false },
+    { text: button1.value, selected: false },
+    { text: button2.value, selected: false },
+    { text: button3.value, selected: false },
   ]);
   const [searchForImages, setSearchForImages] = useState(false);
   const searchField = useRef<HTMLInputElement>(null);
@@ -56,35 +60,40 @@ function Search() {
   return (
     <div className="preview search">
       <div className="search-options">
+        <span>Search in: </span>
         <button
           className={`${determineClassName(0)}`}
           onClick={() => onButtonClick(0)}
         >
-          {button0}
+          <FontAwesomeIcon icon={["fab", "reddit"]} color="#FF5700" />
+          {` ${button0.displayName}`}
         </button>
         <button
           className={`${determineClassName(1)}`}
           onClick={() => onButtonClick(1)}
         >
-          {button1}
+          <FontAwesomeIcon icon={["fab", "wikipedia-w"]} />
+          {` ${button1.displayName}`}
         </button>
         <button
           className={`${determineClassName(2)}`}
           onClick={() => onButtonClick(2)}
         >
-          {button2}
+          <FontAwesomeIcon icon={["fab", "stack-exchange"]} color="#195398" />
+          {` ${button2.displayName}`}
         </button>
         <button
           className={`${determineClassName(3)}`}
           onClick={() => onButtonClick(3)}
         >
-          {button3}
+          <FontAwesomeIcon icon={["fab", "quora"]} color="#a62100" />
+          {` ${button3.displayName}`}
         </button>
         <button
           className={`${searchForImages ? "selected" : ""}`}
           onClick={() => setSearchForImages(!searchForImages)}
         >
-          Search For Images
+          Images
         </button>
       </div>
       <form
@@ -97,6 +106,7 @@ function Search() {
           }${searchForImages ? "&tbm=isch" : ""}`;
         }}
       >
+        <FontAwesomeIcon icon={["fab", "google"]} color="#4c8bf5" />
         <input
           placeholder="Search..."
           type="text"

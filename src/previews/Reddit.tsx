@@ -38,7 +38,8 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
         case !thumbnail ||
           thumbnail === "default" ||
           thumbnail === "self" ||
-          thumbnail === "spoiler":
+          thumbnail === "spoiler" ||
+          thumbnail === "image":
           break;
         case thumbnail !== "nsfw":
           thumbnailView = (
