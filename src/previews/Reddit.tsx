@@ -1,8 +1,22 @@
 import React from "react";
 import useGetData from "../util/useGetData";
 import { getRedditFrontPage } from "../util/api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import RedditBar from "./RedditBar";
 
-function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
+function Reddit({
+  handleLoadMore,
+  expand,
+}: {
+  handleLoadMore: () => void;
+  expand: boolean;
+}) {
+  function intToK(number: number) {
+    const dividedNumber = Math.floor(number / 1000);
+    if (dividedNumber === 0) return number;
+    const modedNumber = Math.round((number % 1000) / 100);
+    return ` ${dividedNumber}.${modedNumber === 10 ? 0 : modedNumber}k`;
+  }
   // Sends a request to the server
   // Returns false before the reponse
   const posts: any = useGetData(getRedditFrontPage);
@@ -15,10 +29,12 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
       permalink: string;
       subreddit: string;
       id: string;
+      num_comments: number;
     };
   }
   // If posts received from server
-  if (posts) {
+  if (posts && posts.data) {
+    console.log(posts.data);
     let hasImage: boolean = false;
     // Map posts to HTML
     const postCollection = posts.data.children.map((post: post) => {
@@ -31,6 +47,7 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
         permalink,
         subreddit,
         id,
+        num_comments,
       } = post.data;
       let thumbnailView = <React.Fragment />;
 
@@ -70,9 +87,24 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
           </div>
           <div className="reddit-upvotes-and-subreddit">
             <p className="reddit-upvotes">
-              <strong>⇧ </strong>
-              {ups}
+              <FontAwesomeIcon
+                icon={["fas", "arrow-alt-circle-up"]}
+                color="#FF5700"
+              />
+              {intToK(ups)}
             </p>
+            <a
+              className="reddit-link-comments"
+              href={`https://old.reddit.com${permalink}`}
+            >
+              <p>
+                <FontAwesomeIcon
+                  icon={["fas", "comment-alt"]}
+                  color="#878a8c"
+                />
+                {` ${intToK(num_comments)} Comments`}
+              </p>
+            </a>
             <a
               className="reddit-link-subreddit"
               href={`https://old.reddit.com/r/`}
@@ -85,17 +117,21 @@ function Reddit({ handleLoadMore }: { handleLoadMore: () => void }) {
     });
 
     return (
-      <React.Fragment>
-        {/* <div className="reddit-shadow" /> */}
-        <div className="reddit">
-          <ul className="preview reddit-posts">{postCollection}</ul>
-          <div className="reddit-shadow">
+      <div className={`reddit ${expand ? "expand" : ""}`}>
+        <RedditBar />
+        <ul className={`preview reddit-posts ${expand ? "expand" : ""}`}>
+          {postCollection}
+        </ul>
+        <div className="reddit-shadow">
+          {expand ? (
+            <button>CLOSE</button>
+          ) : (
             <button onClick={handleLoadMore} className="reddit-more">
               Expand
             </button>
-          </div>
+          )}
         </div>
-      </React.Fragment>
+      </div>
     );
   } else return null;
 }

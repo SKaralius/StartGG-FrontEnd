@@ -21,6 +21,28 @@ $reddit-background-color: white;
   position: relative;
 }
 
+.reddit-bar {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  background-color: #1d2535;
+  width: 100%;
+  padding: 0.5rem 0;
+
+  & > a {
+    //Link
+    & > .reddit-text {
+      margin-left: 0.5rem;
+      margin-bottom: 0.1rem;
+      fill: #cfd0ca;
+    }
+    // Icon
+    & > .reddit-icon {
+      margin-left: 1.5rem;
+    }
+  }
+}
+
 .reddit-shadow {
   @include previewShadow;
 }
@@ -48,13 +70,14 @@ $reddit-background-color: white;
 
   height: auto;
   padding-left: 0.5rem;
+  margin-top: 0.5rem;
   margin-bottom: -($size-of-shadow - ($size-of-shadow / 100 * 30));
 }
 
 .reddit-img-and-title {
   // Container
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
 }
 
@@ -70,13 +93,24 @@ $reddit-background-color: white;
 .reddit-upvotes-and-subreddit {
   // Container
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
-  @include buttonStyle;
-  border: 1px darken($button-color, 10) solid;
   margin-right: 1rem;
   margin-bottom: 1rem;
+  // Links
+  & > a {
+    text-decoration: none;
+    // Text upvotes, comments, subreddit
+    & > p {
+      color: #878a8c;
+      font-weight: 700;
+      font-size: 12px;
+    }
+  }
+}
+
+.reddit-link-comments {
 }
 
 .reddit-link-img {
@@ -93,9 +127,13 @@ $reddit-background-color: white;
   text-decoration: none;
   // Title
   & > p {
+    margin-top: 0;
     margin-bottom: 0.5rem;
+    margin-right: 1rem;
     padding-left: 0rem;
+
     font-weight: 500;
+    color: #222;
   }
 }
 

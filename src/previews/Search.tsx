@@ -93,7 +93,8 @@ function Search() {
           className={`${searchForImages ? "selected" : ""}`}
           onClick={() => setSearchForImages(!searchForImages)}
         >
-          Images
+          <FontAwesomeIcon icon={["fas", "images"]} color="#4c8bf5" />
+          {` Images`}
         </button>
       </div>
       <form

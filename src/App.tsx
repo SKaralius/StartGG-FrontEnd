@@ -1,24 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import PreviewContainer from "./previews/PreviewsContainer";
 import "./scss/App.scss";
 import Search from "./previews/Search";
 import { WEBSITES } from "./util/constants";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function App() {
+  const [isSelected, setIsSelected] = useState<boolean | string>(false);
+  const handleSetIsSelected = (website: string) => {
+    setIsSelected(website);
+  };
   return (
     <div className="App">
       <div className="previews">
-        <FontAwesomeIcon size="2x" icon={["fab", "reddit"]} color="#FF5700" />
-        <PreviewContainer
-          website={WEBSITES.REDDIT}
-          handleLoadMore={() => console.log("clicked")}
-        />
-        <FontAwesomeIcon size="2x" icon={["fab", "youtube"]} color="#FF0000" />
-        <PreviewContainer
-          website={WEBSITES.YOUTUBE}
-          handleLoadMore={() => console.log("clicked")}
-        />
+        {isSelected ? (
+          <PreviewContainer
+            website={isSelected}
+            handleLoadMore={() => false}
+            expand={true}
+          />
+        ) : (
+          <React.Fragment>
+            <PreviewContainer
+              website={WEBSITES.REDDIT}
+              handleLoadMore={() => handleSetIsSelected(WEBSITES.REDDIT)}
+              expand={false}
+            />
+            <PreviewContainer
+              website={WEBSITES.YOUTUBE}
+              handleLoadMore={() => handleSetIsSelected(WEBSITES.YOUTUBE)}
+              expand={false}
+            />
+          </React.Fragment>
+        )}
+
         <Search />
       </div>
     </div>

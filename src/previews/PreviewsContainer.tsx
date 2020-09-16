@@ -9,24 +9,29 @@ import { WEBSITES } from "../util/constants";
 function PreviewsContainer({
   handleLoadMore,
   website,
+  expand,
 }: {
-  handleLoadMore: () => void;
-  website: string;
+  handleLoadMore: () => void | boolean;
+  website: string | boolean;
+  expand: boolean;
 }) {
   let Component = () => <React.Fragment />;
   switch (true) {
     case website === WEBSITES.REDDIT:
-      Component = () => <Reddit handleLoadMore={handleLoadMore} />;
+      Component = () => (
+        <Reddit handleLoadMore={handleLoadMore} expand={expand} />
+      );
       break;
     case website === WEBSITES.YOUTUBE:
-      Component = () => <Youtube handleLoadMore={handleLoadMore} />;
+      Component = () => (
+        <Youtube handleLoadMore={handleLoadMore} expand={expand} />
+      );
       break;
     case website === WEBSITES.WIKIPEDIA:
       Component = () => <Wikipedia handleLoadMore={handleLoadMore} />;
       break;
 
     default:
-      console.log("No such website");
       break;
   }
   return (

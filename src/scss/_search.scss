@@ -10,7 +10,7 @@
 
 .search-options {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
     "prompt tag1 tag3 tag3"

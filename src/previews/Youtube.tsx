@@ -1,8 +1,15 @@
 import React from "react";
 import useGetData from "../util/useGetData";
 import { getYoutubeTrending } from "../util/api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Youtube({ handleLoadMore }: { handleLoadMore: () => void }) {
+function Youtube({
+  handleLoadMore,
+  expand,
+}: {
+  handleLoadMore: () => void;
+  expand: boolean;
+}) {
   const posts: any = useGetData(getYoutubeTrending);
   interface post {
     id: string;
@@ -14,7 +21,6 @@ function Youtube({ handleLoadMore }: { handleLoadMore: () => void }) {
       title: string;
     };
   }
-  console.log(posts);
   if (posts) {
     const postCollection = posts.map((post: post) => {
       return (
@@ -37,6 +43,7 @@ function Youtube({ handleLoadMore }: { handleLoadMore: () => void }) {
     });
     return (
       <div className="youtube">
+        <FontAwesomeIcon size="2x" icon={["fab", "youtube"]} color="#FF0000" />
         <ul className="preview youtube-posts">{postCollection}</ul>
         <div className="youtube-shadow">
           <button className="youtube-more" onClick={handleLoadMore}>

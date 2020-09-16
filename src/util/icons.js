@@ -7,6 +7,11 @@ import {
   faYoutube,
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
+import {
+  faImages,
+  faArrowAltCircleUp,
+  faCommentAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faReddit,
@@ -14,5 +19,8 @@ library.add(
   faWikipediaW,
   faQuora,
   faYoutube,
-  faGoogle
+  faGoogle,
+  faImages,
+  faArrowAltCircleUp,
+  faCommentAlt
 );
