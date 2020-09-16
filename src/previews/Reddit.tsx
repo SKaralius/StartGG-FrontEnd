@@ -1,15 +1,16 @@
 import React from "react";
-import useGetData from "../util/useGetData";
-import { getRedditFrontPage } from "../util/api";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RedditBar from "./RedditBar";
 
 function Reddit({
   handleLoadMore,
   expand,
+  posts,
 }: {
   handleLoadMore: () => void;
   expand: boolean;
+  posts: any;
 }) {
   function intToK(number: number) {
     const dividedNumber = Math.floor(number / 1000);
@@ -19,7 +20,7 @@ function Reddit({
   }
   // Sends a request to the server
   // Returns false before the reponse
-  const posts: any = useGetData(getRedditFrontPage);
+
   interface post {
     data: {
       ups: number;
