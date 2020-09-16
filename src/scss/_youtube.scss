@@ -41,13 +41,6 @@
   @include previewShadow;
 }
 
-.youtube-more {
-  height: 2rem;
-  margin-bottom: 1rem;
-  @include buttonStyle;
-  pointer-events: all;
-}
-
 .youtube-title {
   grid-area: title;
 }

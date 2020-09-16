@@ -1,21 +1,22 @@
 import React from "react";
-import useGetData from "../util/useGetData";
-import { getYoutubeTrending } from "../util/api";
+
 import YoutubeBar from "./YoutubeBar";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import ExpandButton from "../components/ExpandButton";
 
 function Youtube({
   handleLoadMore,
   expand,
+  posts,
 }: {
   handleLoadMore: () => void;
   expand: boolean;
+  posts: any;
 }) {
   dayjs.extend(relativeTime);
-  const posts: any = useGetData(getYoutubeTrending);
-  //PT1M27S
   function formatDuration(duration: string) {
+    //PT1M27S
     let formatedDuration: string = "";
     const durationArray = duration.split("");
 
@@ -81,9 +82,7 @@ function Youtube({
         <YoutubeBar />
         <ul className="preview youtube-posts">{postCollection}</ul>
         <div className="youtube-shadow">
-          <button className="youtube-more" onClick={handleLoadMore}>
-            Expand
-          </button>
+          <ExpandButton handleLoadMore={handleLoadMore} expand={expand} />
         </div>
       </div>
     );

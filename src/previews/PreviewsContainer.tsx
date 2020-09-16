@@ -26,7 +26,11 @@ function PreviewsContainer({
       break;
     case website === WEBSITES.YOUTUBE:
       Component = () => (
-        <Youtube handleLoadMore={handleLoadMore} expand={expand} />
+        <Youtube
+          handleLoadMore={handleLoadMore}
+          expand={expand}
+          posts={posts}
+        />
       );
       break;
     case website === WEBSITES.WIKIPEDIA:

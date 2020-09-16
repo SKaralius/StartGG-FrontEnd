@@ -2,6 +2,7 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RedditBar from "./RedditBar";
+import ExpandButton from "../components/ExpandButton";
 
 function Reddit({
   handleLoadMore,
@@ -124,13 +125,7 @@ function Reddit({
           {postCollection}
         </ul>
         <div className="reddit-shadow">
-          {expand ? (
-            <button>CLOSE</button>
-          ) : (
-            <button onClick={handleLoadMore} className="reddit-more">
-              Expand
-            </button>
-          )}
+          <ExpandButton handleLoadMore={handleLoadMore} expand={expand} />
         </div>
       </div>
     );

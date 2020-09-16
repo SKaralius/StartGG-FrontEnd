@@ -4,23 +4,29 @@ import "./scss/App.scss";
 import Search from "./previews/Search";
 import { WEBSITES } from "./util/constants";
 import { getRedditFrontPage } from "./util/api";
+import { getYoutubeTrending } from "./util/api";
 import useGetData from "./util/useGetData";
 
 function App() {
   const [isSelected, setIsSelected] = useState<boolean | string>(false);
-  const handleSetIsSelected = (website: string) => {
+  const handleSetIsSelected = (website: string | boolean) => {
     setIsSelected(website);
   };
-  const posts: any = useGetData(getRedditFrontPage);
+  const redditPosts: any = useGetData(getRedditFrontPage);
+  const youtubePosts: any = useGetData(getYoutubeTrending);
+  function getPosts() {
+    if (isSelected === WEBSITES.REDDIT) return redditPosts;
+    if (isSelected === WEBSITES.YOUTUBE) return youtubePosts;
+  }
   return (
     <div className="App">
       <div className="previews">
         {isSelected ? (
           <PreviewContainer
             website={isSelected}
-            handleLoadMore={() => false}
+            handleLoadMore={() => handleSetIsSelected(false)}
             expand={true}
-            posts={posts}
+            posts={getPosts()}
           />
         ) : (
           <React.Fragment>
@@ -28,12 +34,13 @@ function App() {
               website={WEBSITES.REDDIT}
               handleLoadMore={() => handleSetIsSelected(WEBSITES.REDDIT)}
               expand={false}
-              posts={posts}
+              posts={redditPosts}
             />
             <PreviewContainer
               website={WEBSITES.YOUTUBE}
               handleLoadMore={() => handleSetIsSelected(WEBSITES.YOUTUBE)}
               expand={false}
+              posts={youtubePosts}
             />
           </React.Fragment>
         )}
