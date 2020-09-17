@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useGetYoutubeTrending(apiCall) {
+export default function useGetData(apiCall) {
   const [data, setData] = useState(false);
   async function getPosts() {
     try {

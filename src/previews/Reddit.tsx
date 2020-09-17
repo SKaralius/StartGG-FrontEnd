@@ -35,11 +35,10 @@ function Reddit({
     };
   }
   // If posts received from server
-  if (posts && posts.data) {
-    console.log(posts.data);
+  if (posts) {
     let hasImage: boolean = false;
     // Map posts to HTML
-    const postCollection = posts.data.children.map((post: post) => {
+    const postCollection = posts.map((post: post) => {
       // Destructure data
       const {
         ups,
