@@ -9,12 +9,15 @@
 }
 
 .search-options {
+  width: 90%;
+
   display: grid;
   grid-template-columns: auto 1fr 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
-    "prompt tag1 tag3 tag3"
-    ". tag2 tag4 tag5";
+    "tag1 tag3 tag3"
+    "tag2 tag4 tag5"
+    "input input input";
 
   & > span {
     grid-area: prompt;
@@ -22,31 +25,30 @@
 
   @for $i from 1 to 7 {
     button:nth-child(#{$i}) {
-      grid-area: tag#{$i - 1};
+      grid-area: tag#{$i};
     }
+  }
+
+  & > button {
+    @include buttonStyle;
   }
 }
 
 .search-form-input {
-  width: 100%;
+  grid-area: input;
+
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+
   & > input {
-    width: 75%;
-    margin-bottom: 1rem;
+    width: 80%;
   }
   & > svg {
-    align-self: center;
-    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
   }
-}
-
-.search-options > button {
-  @include buttonStyle;
 }
 
 .selected {
-  background-color: #747474 !important;
-  border: 1px outset #808080 !important;
-  border-radius: 10px;
+  border: 3px inset white !important;
 }

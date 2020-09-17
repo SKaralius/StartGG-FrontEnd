@@ -60,7 +60,6 @@ function Search() {
   return (
     <div className="preview search">
       <div className="search-options">
-        <span>Search in: </span>
         <button
           className={`${determineClassName(0)}`}
           onClick={() => onButtonClick(0)}
@@ -96,25 +95,25 @@ function Search() {
           <FontAwesomeIcon icon={["fas", "images"]} color="#4c8bf5" />
           {` Images`}
         </button>
+        <form
+          className="search-form-input"
+          onSubmit={(e) => {
+            e.preventDefault();
+            // "site:reddit.com+OR+site:qoura.com+";
+            window.location.href = `https://www.google.com/search?q=${getDesiredWebsites()}${
+              searchField?.current?.value
+            }${searchForImages ? "&tbm=isch" : ""}`;
+          }}
+        >
+          <FontAwesomeIcon icon={["fab", "google"]} color="#4c8bf5" />
+          <input
+            placeholder="Search..."
+            type="text"
+            onClick={onKeyClick}
+            ref={searchField}
+          />
+        </form>
       </div>
-      <form
-        className="search-form-input"
-        onSubmit={(e) => {
-          e.preventDefault();
-          // "site:reddit.com+OR+site:qoura.com+";
-          window.location.href = `https://www.google.com/search?q=${getDesiredWebsites()}${
-            searchField?.current?.value
-          }${searchForImages ? "&tbm=isch" : ""}`;
-        }}
-      >
-        <FontAwesomeIcon icon={["fab", "google"]} color="#4c8bf5" />
-        <input
-          placeholder="Search..."
-          type="text"
-          onClick={onKeyClick}
-          ref={searchField}
-        />
-      </form>
     </div>
   );
 }

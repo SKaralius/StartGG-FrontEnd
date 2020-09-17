@@ -32,13 +32,10 @@
 
 .youtube-link-img {
   grid-area: image;
+  align-items: flex-start;
   & > img {
     width: 112px;
   }
-}
-
-.youtube-shadow {
-  @include previewShadow;
 }
 
 .youtube-title {
@@ -48,8 +45,7 @@
 .youtube-post {
   display: grid;
   grid-template-columns: 112px auto;
-  grid-template-rows: 1fr 1fr;
-  align-items: center;
+  align-items: flex-start;
 
   column-gap: 0.5rem;
 

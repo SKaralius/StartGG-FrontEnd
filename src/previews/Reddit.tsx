@@ -2,7 +2,7 @@ import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RedditBar from "./RedditBar";
-import ExpandButton from "../components/ExpandButton";
+import Shadow from "../components/Shadow";
 
 function Reddit({
   handleLoadMore,
@@ -124,9 +124,7 @@ function Reddit({
         <ul className={`preview reddit-posts ${expand ? "expand" : ""}`}>
           {postCollection}
         </ul>
-        <div className="reddit-shadow">
-          <ExpandButton handleLoadMore={handleLoadMore} expand={expand} />
-        </div>
+        <Shadow handleLoadMore={handleLoadMore} expand={expand} />
       </div>
     );
   } else return null;

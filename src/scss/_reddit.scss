@@ -1,18 +1,6 @@
 $reddit-height: 50vh;
 $reddit-background-color: white;
 
-// .reddit-shadow {
-//   height: $reddit-height;
-//   width: 100%;
-
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-
-//   box-shadow: inset 0px -40px 40px 0px #cfcbbd;
-//   pointer-events: none;
-// }
-
 .reddit {
   height: $reddit-height;
   overflow-y: scroll;
@@ -37,8 +25,12 @@ $reddit-background-color: white;
   }
 }
 
-.reddit-shadow {
+.shadow {
   @include previewShadow;
+}
+
+.no-shadow {
+  @include noPreviewShadow;
 }
 
 .more {

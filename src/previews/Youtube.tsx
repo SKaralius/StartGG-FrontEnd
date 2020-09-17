@@ -3,7 +3,7 @@ import React from "react";
 import YoutubeBar from "./YoutubeBar";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import ExpandButton from "../components/ExpandButton";
+import Shadow from "../components/Shadow";
 
 function Youtube({
   handleLoadMore,
@@ -81,9 +81,7 @@ function Youtube({
       <div className="youtube">
         <YoutubeBar />
         <ul className="preview youtube-posts">{postCollection}</ul>
-        <div className="youtube-shadow">
-          <ExpandButton handleLoadMore={handleLoadMore} expand={expand} />
-        </div>
+        <Shadow handleLoadMore={handleLoadMore} expand={expand} />
       </div>
     );
   } else {

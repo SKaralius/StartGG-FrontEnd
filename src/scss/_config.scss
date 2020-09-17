@@ -4,7 +4,8 @@ $size-of-shadow: 25vh;
 @mixin buttonStyle {
   background-color: $button-color;
   border-radius: 10px;
-  border: 1px outset white;
+  border: 3px outset white;
+  font-weight: 600;
 }
 
 @mixin removeUlUserAgent {
@@ -23,6 +24,20 @@ $size-of-shadow: 25vh;
   align-items: flex-end;
 
   box-shadow: inset 37px -200px 47px -140px white;
+
+  pointer-events: none;
+
+  height: $size-of-shadow;
+}
+
+@mixin noPreviewShadow {
+  position: sticky;
+  bottom: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 
   pointer-events: none;
 
