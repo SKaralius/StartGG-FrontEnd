@@ -51,4 +51,5 @@
 
 .selected {
   border: 3px inset white !important;
+  background-color: darken($button-color, 5) !important;
 }

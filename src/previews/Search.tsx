@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useStickyState from "../util/useStickyState";
 
 function Search() {
   // Site names
@@ -11,12 +12,15 @@ function Search() {
   };
   const button3 = { value: "site:quora.com", displayName: "Quora" };
   // Names are mapped to buttons.
-  const [searchInWebsites, setSearchInWebsites] = useState([
-    { text: button0.value, selected: false },
-    { text: button1.value, selected: false },
-    { text: button2.value, selected: false },
-    { text: button3.value, selected: false },
-  ]);
+  const [searchInWebsites, setSearchInWebsites] = useStickyState(
+    [
+      { text: button0.value, selected: false },
+      { text: button1.value, selected: false },
+      { text: button2.value, selected: false },
+      { text: button3.value, selected: false },
+    ],
+    "search-buttons"
+  );
   const [searchForImages, setSearchForImages] = useState(false);
   const searchField = useRef<HTMLInputElement>(null);
   // strict null checks need us to check if searchField and current exist.
@@ -42,7 +46,7 @@ function Search() {
   function getDesiredWebsites() {
     let searchFilter = "";
     let selectedWebsiteCount = 0;
-    searchInWebsites.forEach((website) => {
+    searchInWebsites.forEach((website: { text: string; selected: boolean }) => {
       if (website.selected) {
         // If first website selected, no "OR" is needed
         if (selectedWebsiteCount === 0) searchFilter += website.text + "+";

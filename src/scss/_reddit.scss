@@ -78,8 +78,9 @@ $reddit-background-color: white;
 
 .reddit-upvotes-and-subreddit {
   // Container
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
   align-items: center;
 
   margin-right: 1rem;
@@ -89,9 +90,11 @@ $reddit-background-color: white;
     text-decoration: none;
     // Text upvotes, comments, subreddit
     & > p {
+      margin: 0;
       color: #878a8c;
       font-weight: 700;
       font-size: 12px;
+      word-wrap: break-word;
     }
   }
 }
