@@ -3,15 +3,20 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import RedditBar from "./RedditBar";
 import Shadow from "../components/Shadow";
+import Pages from "../components/Pages";
 
 function Reddit({
   handleLoadMore,
   expand,
   posts,
+  handleSetPage,
+  currentPage,
 }: {
   handleLoadMore: () => void;
   expand: boolean;
   posts: any;
+  handleSetPage?: (arg0: number) => void;
+  currentPage?: number;
 }) {
   function intToK(number: number) {
     const dividedNumber = Math.floor(number / 1000);
@@ -122,6 +127,9 @@ function Reddit({
         <RedditBar />
         <ul className={`preview reddit-posts ${expand ? "expand" : ""}`}>
           {postCollection}
+          {(currentPage === 0 || currentPage) && handleSetPage ? (
+            <Pages currentPage={currentPage} setPage={handleSetPage} />
+          ) : null}
         </ul>
         <Shadow handleLoadMore={handleLoadMore} expand={expand} />
       </div>

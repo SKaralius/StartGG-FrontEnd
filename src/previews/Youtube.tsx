@@ -4,15 +4,20 @@ import YoutubeBar from "./YoutubeBar";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Shadow from "../components/Shadow";
+import Pages from "../components/Pages";
 
 function Youtube({
   handleLoadMore,
   expand,
   posts,
+  handleSetPage,
+  currentPage,
 }: {
   handleLoadMore: () => void;
   expand: boolean;
   posts: any;
+  handleSetPage?: (arg0: number) => void;
+  currentPage?: number;
 }) {
   dayjs.extend(relativeTime);
   function formatDuration(duration: string) {
@@ -80,7 +85,12 @@ function Youtube({
     return (
       <div className="youtube">
         <YoutubeBar />
-        <ul className="preview youtube-posts">{postCollection}</ul>
+        <ul className="preview youtube-posts">
+          {postCollection}
+          {(currentPage === 0 || currentPage) && handleSetPage ? (
+            <Pages currentPage={currentPage} setPage={handleSetPage} />
+          ) : null}
+        </ul>
         <Shadow handleLoadMore={handleLoadMore} expand={expand} />
       </div>
     );

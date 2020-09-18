@@ -10,10 +10,23 @@ import useStickyState from "./util/useStickyState";
 
 function App() {
   const [isSelected, setIsSelected] = useStickyState(false, "website");
+  const [redditPage, setRedditPage] = useStickyState(0, "reddit-page");
+  const [youtubePage, setYoutubePage] = useStickyState(0, "reddit-page");
   const handleSetIsSelected = (website: string | boolean) => {
     setIsSelected(website);
   };
-  const redditPosts: any = useGetData(getRedditFrontPage);
+  const handleSetPage = () => {
+    if (isSelected === WEBSITES.REDDIT) return setRedditPage;
+    if (isSelected === WEBSITES.YOUTUBE) return setYoutubePage;
+  };
+  const chooseCurrentPage = () => {
+    if (isSelected === WEBSITES.REDDIT) return redditPage;
+    if (isSelected === WEBSITES.YOUTUBE) return youtubePage;
+  };
+  const redditPosts: any = useGetData(
+    () => getRedditFrontPage(redditPage),
+    redditPage
+  );
   const youtubePosts: any = useGetData(getYoutubeTrending);
   function getPosts() {
     if (isSelected === WEBSITES.REDDIT) return redditPosts;
@@ -28,6 +41,8 @@ function App() {
             handleLoadMore={() => handleSetIsSelected(false)}
             expand={true}
             posts={getPosts()}
+            handleSetPage={handleSetPage()}
+            currentPage={chooseCurrentPage()}
           />
         ) : (
           <React.Fragment>

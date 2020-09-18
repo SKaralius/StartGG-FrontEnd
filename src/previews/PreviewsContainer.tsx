@@ -11,17 +11,27 @@ function PreviewsContainer({
   website,
   expand,
   posts,
+  handleSetPage,
+  currentPage,
 }: {
   handleLoadMore: () => void | boolean;
   website: string | boolean;
   expand: boolean;
   posts?: any;
+  handleSetPage?: (arg0: number) => void;
+  currentPage?: number;
 }) {
   let Component = () => <React.Fragment />;
   switch (true) {
     case website === WEBSITES.REDDIT:
       Component = () => (
-        <Reddit handleLoadMore={handleLoadMore} expand={expand} posts={posts} />
+        <Reddit
+          handleLoadMore={handleLoadMore}
+          expand={expand}
+          posts={posts}
+          handleSetPage={handleSetPage}
+          currentPage={currentPage}
+        />
       );
       break;
     case website === WEBSITES.YOUTUBE:
@@ -30,6 +40,8 @@ function PreviewsContainer({
           handleLoadMore={handleLoadMore}
           expand={expand}
           posts={posts}
+          handleSetPage={handleSetPage}
+          currentPage={currentPage}
         />
       );
       break;
