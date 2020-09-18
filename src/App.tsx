@@ -27,7 +27,10 @@ function App() {
     () => getRedditFrontPage(redditPage),
     redditPage
   );
-  const youtubePosts: any = useGetData(getYoutubeTrending);
+  const youtubePosts: any = useGetData(
+    () => getYoutubeTrending(youtubePage),
+    youtubePage
+  );
   function getPosts() {
     if (isSelected === WEBSITES.REDDIT) return redditPosts;
     if (isSelected === WEBSITES.YOUTUBE) return youtubePosts;

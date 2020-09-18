@@ -5,9 +5,8 @@ httpService.get = (route) => {
   );
 };
 
-export const getRedditFrontPage = (pageNumber) => {
-  console.log(pageNumber);
-  return httpService.get(`reddit/${pageNumber}`);
-};
+export const getRedditFrontPage = (pageNumber) =>
+  httpService.get(`reddit/${pageNumber}`);
 
-export const getYoutubeTrending = () => httpService.get(`youtube`);
+export const getYoutubeTrending = (pageNumber) =>
+  httpService.get(`youtube/${pageNumber}`);

@@ -6,7 +6,6 @@ export default function useGetData(apiCall, pageNumber) {
     try {
       const response = await apiCall();
       const posts = await response.json();
-      console.log(posts, response);
       setData(posts);
     } catch (err) {
       console.log(err);
@@ -14,6 +13,7 @@ export default function useGetData(apiCall, pageNumber) {
   }
   useEffect(() => {
     getPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber]);
   return data;
 }
