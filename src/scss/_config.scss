@@ -27,7 +27,7 @@ $size-of-shadow: 25vh;
 
   pointer-events: none;
 
-  height: $size-of-shadow;
+  height: 100%;
 }
 
 @mixin noPreviewShadow {

@@ -1,8 +1,7 @@
-$reddit-height: 50vh;
+$reddit-height: 46vh;
 $reddit-background-color: white;
 
 .reddit {
-  height: $reddit-height;
   overflow-y: scroll;
 
   flex-shrink: 0;

@@ -1,0 +1,16 @@
+@media (orientation: landscape) {
+  .previews {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+  }
+  .reddit {
+    height: 100%;
+  }
+  .search {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .more {
+    visibility: hidden;
+  }
+}

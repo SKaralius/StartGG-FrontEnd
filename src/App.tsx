@@ -37,7 +37,7 @@ function App() {
   }
   return (
     <div className="App">
-      <div className="previews">
+      <div className={`previews ${isSelected ? "expand" : ""}`}>
         {isSelected ? (
           <PreviewContainer
             website={isSelected}

@@ -3,6 +3,7 @@
 @import "reddit";
 @import "youtube";
 @import "search";
+@import "responsive";
 
 body {
   margin: 0;
@@ -22,10 +23,4 @@ body,
 
 h1 {
   margin: 0;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
