@@ -23,6 +23,12 @@ function Search() {
   );
   const [searchForImages, setSearchForImages] = useState(false);
   const searchField = useRef<HTMLInputElement>(null);
+  function handleSearchForImages() {
+    setSearchForImages(!searchForImages);
+    if (searchField && searchField.current) {
+      searchField.current.focus();
+    }
+  }
   // strict null checks need us to check if searchField and current exist.
   const onKeyClick = () => {
     // but once current exists, it is of type HTMLInputElement, thus it
@@ -40,6 +46,9 @@ function Search() {
     ].selected;
     // Write back to state
     setSearchInWebsites(searchInWebsitesCopy);
+    if (searchField && searchField.current) {
+      searchField.current.focus();
+    }
   };
   // Function translates the website object in state
   // to a search string that can be used for google
@@ -94,7 +103,7 @@ function Search() {
         </button>
         <button
           className={`${searchForImages ? "selected" : ""}`}
-          onClick={() => setSearchForImages(!searchForImages)}
+          onClick={handleSearchForImages}
         >
           <FontAwesomeIcon icon={["fas", "images"]} color="#4c8bf5" />
           {` Images`}
