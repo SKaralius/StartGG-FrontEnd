@@ -1,5 +1,5 @@
 $button-color: #e1e4e2;
-$size-of-shadow: 25vh;
+$size-of-shadow: 35vmin;
 
 @mixin buttonStyle {
   background-color: $button-color;
@@ -27,7 +27,7 @@ $size-of-shadow: 25vh;
 
   pointer-events: none;
 
-  height: 100%;
+  height: $size-of-shadow;
 }
 
 @mixin noPreviewShadow {
