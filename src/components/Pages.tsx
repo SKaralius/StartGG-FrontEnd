@@ -11,12 +11,16 @@ export default function Pages({
     isChangeToNext ? setPage(currentPage + 1) : setPage(currentPage - 1);
   }
   return (
-    <div>
+    <div className="pages">
       {currentPage === 0 ? null : (
-        <button onClick={() => handlePageChange(false)}>Previous</button>
+        <button className="previous" onClick={() => handlePageChange(false)}>
+          Previous
+        </button>
       )}
       {currentPage === 3 ? null : (
-        <button onClick={() => handlePageChange(true)}>Next</button>
+        <button className="next" onClick={() => handlePageChange(true)}>
+          Next
+        </button>
       )}
     </div>
   );

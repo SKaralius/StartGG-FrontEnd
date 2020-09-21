@@ -45,9 +45,6 @@ function PreviewsContainer({
         />
       );
       break;
-    case website === WEBSITES.WIKIPEDIA:
-      Component = () => <Wikipedia handleLoadMore={handleLoadMore} />;
-      break;
 
     default:
       break;

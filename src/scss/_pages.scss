@@ -1,0 +1,19 @@
+.pages {
+  display: flex;
+  margin-right: 2rem;
+}
+
+button {
+  @include buttonStyle;
+}
+
+.previous {
+  height: 2rem;
+  min-width: 5rem;
+}
+
+.next {
+  margin-left: auto;
+  height: 2rem;
+  min-width: 5rem;
+}

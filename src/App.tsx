@@ -54,12 +54,16 @@ function App() {
               handleLoadMore={() => handleSetIsSelected(WEBSITES.REDDIT)}
               expand={false}
               posts={redditPosts}
+              handleSetPage={setRedditPage}
+              currentPage={redditPage}
             />
             <PreviewContainer
               website={WEBSITES.YOUTUBE}
               handleLoadMore={() => handleSetIsSelected(WEBSITES.YOUTUBE)}
               expand={false}
               posts={youtubePosts}
+              handleSetPage={setYoutubePage}
+              currentPage={youtubePage}
             />
           </React.Fragment>
         )}
