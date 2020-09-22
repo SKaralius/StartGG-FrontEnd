@@ -1,7 +1,6 @@
 import React from "react";
 // Previews
 import Reddit from "./Reddit";
-import Wikipedia from "./Wikipedia";
 import Youtube from "./Youtube";
 // Constants
 import { WEBSITES } from "../util/constants";

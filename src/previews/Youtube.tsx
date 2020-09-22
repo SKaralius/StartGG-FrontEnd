@@ -3,6 +3,8 @@ import React from "react";
 import YoutubeBar from "./YoutubeBar";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import utc from "dayjs/plugin/utc";
+import duration from "dayjs/plugin/duration";
 import Shadow from "../components/Shadow";
 import Pages from "../components/Pages";
 
@@ -20,29 +22,17 @@ function Youtube({
   currentPage?: number;
 }) {
   dayjs.extend(relativeTime);
+  dayjs.extend(duration);
+  dayjs.extend(utc);
   function formatDuration(duration: string) {
-    //PT1M27S
-    let formatedDuration: string = "";
-    const durationArray = duration.split("");
-
-    for (let i = durationArray.length; i >= 0; i--) {
-      if (durationArray[i] === "S") {
-        i--;
-        formatedDuration += durationArray[i];
-        i--;
-        formatedDuration += durationArray[i];
-        formatedDuration += ":";
-      }
-      if (durationArray[i] === "M") {
-        i--;
-        formatedDuration += durationArray[i];
-        i--;
-        if (typeof durationArray[i] === "number")
-          formatedDuration += durationArray[i];
-      }
+    const milliseconds = dayjs.duration(duration).asMilliseconds();
+    let date = "";
+    if (milliseconds > 3600000) {
+      date = dayjs.utc(milliseconds).format("HH:mm:ss");
+    } else {
+      date = dayjs.utc(milliseconds).format("mm:ss");
     }
-    formatedDuration = formatedDuration.split("").reverse().join("");
-    return formatedDuration;
+    return date;
   }
   interface post {
     id: string;
