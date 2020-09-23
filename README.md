@@ -1,44 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center"><a href="https://startgg.com">Live Website.<a/></h1>
 
-## Available Scripts
+# StartGG
 
-In the project directory, you can run:
+A lightweight personal homepage. Currently it includes Reddit and Youtube, as well as some utility search functions.
+This webpage is suppose to let you take a glance at Reddit's or Youtube's front pages when you open up your browser.
 
-### `npm start`
+## Motivation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I have used Reddit for a long time and in recent years, it has become very bloated. What once was a collection of text posts and links
+is now weighted down by features which increase load times and obscure the content. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+If you go on Reddit on your phone, in a private tab, what you are going to see is **3 banners** and **no content**.
 
-### `npm test`
+Reddit's speed index on google lighthouse is 6 seconds. StartGG's is 1.8 seconds.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Same thing for youtube, you go to the website, you see a prompt to Sign In, **no content**.
 
-### `npm run build`
+And lastly, the search bar at the bottom of StartGG is there to conveniently find information.
+For example, you want to find out how to remove permanent marker. Pretty staightforward question. You open up a new tab, write "How to remove permanent marker"
+in the adress bar, click the first link, what do you get? A long long article which sets up the backstory, the characters, you know the ones.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A smarter search query is a query to a website, which you know has the answer. In my experience, they are community driven websites such as Quora, StackExchange, Reddit.
+So the query you have to write is "site:quora.com how to remove permanent marker" or "site:stackexchange.com how to remove permanent marker". The answer is literally in the
+first sentence for both of these searches. You can even combine the queries like so: "site:stackexchange.com OR site:quora.com how to remove permanent marker".
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+In essence a search whitelist for when you want to get straight to the point. The search bar makes these queries, so you wouldn't have to type "site:stackexchange.com OR site:quora.com how to remove permanent marker" on your phone.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How it works
 
-### `npm run eject`
+The server asks Reddit and Youtube for the most popular posts and videos. It processes the information, in other words, throws away all the bloat and caches what's valuable.
+The cached resources can be delivered very quickly, because they're ready in the servers memory. Resources are updated every half hour by the server.
+Front end receives the resources and builds a simple, lightweight view.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Search bar redirects you to google with the query that you've built.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## In the future
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Youtube and Reddit's API's can be utilized further, not only to receive the most popular content, but to allow users to log in and receive their own personalized content
+they are used to seeing on those platforms.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+More social media views can be implemented.
