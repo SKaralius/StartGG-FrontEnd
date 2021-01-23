@@ -20,7 +20,7 @@ function Reddit({
 }) {
   function intToK(number: number) {
     const dividedNumber = Math.floor(number / 1000);
-    if (dividedNumber === 0) return number;
+    if (dividedNumber === 0) return ` ${number}`;
     const modedNumber = Math.round((number % 1000) / 100);
     return ` ${dividedNumber}.${modedNumber === 10 ? 0 : modedNumber}k`;
   }
