@@ -2,128 +2,141 @@ $reddit-height: 46vh;
 $reddit-background-color: white;
 
 .reddit {
-  overflow-y: scroll;
+    overflow-y: scroll;
 
-  flex-shrink: 0;
-  position: relative;
+    flex-shrink: 0;
+    position: relative;
 }
 
 .reddit-bar {
-  @include contentBar(#1d2535);
-  & > a {
-    //Link
-    & > .reddit-text {
-      margin-left: 0.5rem;
-      margin-bottom: 0.1rem;
-      fill: #cfd0ca;
+    @include contentBar(#1d2535);
+    display: flex;
+    justify-content: space-between;
+    & > form {
+        margin-right: 1rem;
+        margin-top: 0.2rem;
+        & > input {
+            text-indent: 10px;
+            margin-right: 1rem;
+            border-radius: 6px;
+        }
     }
-    // Icon
-    & > .reddit-icon {
-      margin-left: 1.5rem;
+    & > button {
+        //Link
+        background-color: transparent;
+        border: none;
+        & > .reddit-text {
+            margin-left: 0.5rem;
+            margin-bottom: 0.1rem;
+            fill: #cfd0ca;
+        }
+        // Icon
+        & > .reddit-icon {
+            margin-left: 1.5rem;
+        }
     }
-  }
 }
 
 .shadow {
-  @include previewShadow;
+    @include previewShadow;
 }
 
 .no-shadow {
-  @include noPreviewShadow;
+    @include noPreviewShadow;
 }
 
 .more {
-  height: 2rem;
-  margin-bottom: 1rem;
-  @include buttonStyle;
-  pointer-events: all;
+    height: 2rem;
+    margin-bottom: 1rem;
+    @include buttonStyle;
+    pointer-events: all;
 }
 
 .reddit-upvotes {
-  margin: 0rem 0;
-  font-weight: 400;
-  // Arrow
-  & > strong {
-    color: orange;
-  }
+    margin: 0rem 0;
+    font-weight: 400;
+    // Arrow
+    & > strong {
+        color: orange;
+    }
 }
 
 .reddit-posts {
-  // Container
-  background-color: $reddit-background-color;
-  margin: 0;
+    // Container
+    background-color: $reddit-background-color;
+    margin: 0;
 
-  height: auto;
-  padding-left: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: -($size-of-shadow - ($size-of-shadow / 100 * 30));
+    height: auto;
+    padding-left: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: -($size-of-shadow - ($size-of-shadow / 100 * 30));
 }
 
 .reddit-img-and-title {
-  // Container
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+    // Container
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .reddit-link-subreddit {
-  //Link
+    //Link
 
-  // Subreddit
-  & > p {
-    margin: 0;
-  }
+    // Subreddit
+    & > p {
+        margin: 0;
+    }
 }
 
 .reddit-upvotes-and-subreddit {
-  // Container
-  width: 100%;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  align-items: center;
+    // Container
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
 
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  // Links
-  & > a {
-    text-decoration: none;
-    // Text upvotes, comments, subreddit
-    & > p {
-      margin: 0;
-      color: #878a8c;
-      font-weight: 700;
-      font-size: 12px;
-      word-wrap: break-word;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    // Links
+    & > a {
+        text-decoration: none;
+        // Text upvotes, comments, subreddit
+        & > p {
+            margin: 0;
+            color: #878a8c;
+            font-weight: 700;
+            font-size: 12px;
+            word-wrap: break-word;
+        }
     }
-  }
 }
 
 .reddit-link-img {
-  // Link
+    // Link
 
-  // Image
-  & > img {
-    width: 7rem;
-  }
+    // Image
+    & > img {
+        width: 7rem;
+    }
 }
 
 .reddit-link-title {
-  // Link
-  text-decoration: none;
-  // Title
-  & > p {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    margin-right: 1rem;
-    padding-left: 0rem;
+    // Link
+    text-decoration: none;
+    // Title
+    & > p {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        margin-right: 1rem;
+        padding-left: 0rem;
 
-    font-weight: 500;
-    color: #222;
-  }
+        font-weight: 500;
+        color: #222;
+    }
 }
 
 .reddit-title-with-img {
-  // When a post includes a title and an image
-  // Applies this css to title
-  padding-left: 0.5rem !important;
+    // When a post includes a title and an image
+    // Applies this css to title
+    padding-left: 0.5rem !important;
 }

@@ -6,53 +6,56 @@ import Youtube from "./Youtube";
 import { WEBSITES } from "../util/constants";
 
 function PreviewsContainer({
-  handleLoadMore,
-  website,
-  expand,
-  posts,
-  handleSetPage,
-  currentPage,
+    handleLoadMore,
+    website,
+    expand,
+    handleSetSubreddit,
+    posts,
+    handleSetPage,
+    currentPage,
 }: {
-  handleLoadMore: () => void | boolean;
-  website: string | boolean;
-  expand: boolean;
-  posts?: any;
-  handleSetPage?: (arg0: number) => void;
-  currentPage?: number;
+    handleLoadMore: () => void | boolean;
+    website: string | boolean;
+    expand: boolean;
+    handleSetSubreddit: (arg0: string) => void;
+    posts?: any;
+    handleSetPage?: (arg0: number) => void;
+    currentPage?: number;
 }) {
-  let Component = () => <React.Fragment />;
-  switch (true) {
-    case website === WEBSITES.REDDIT:
-      Component = () => (
-        <Reddit
-          handleLoadMore={handleLoadMore}
-          expand={expand}
-          posts={posts}
-          handleSetPage={handleSetPage}
-          currentPage={currentPage}
-        />
-      );
-      break;
-    case website === WEBSITES.YOUTUBE:
-      Component = () => (
-        <Youtube
-          handleLoadMore={handleLoadMore}
-          expand={expand}
-          posts={posts}
-          handleSetPage={handleSetPage}
-          currentPage={currentPage}
-        />
-      );
-      break;
+    let Component = () => <React.Fragment />;
+    switch (true) {
+        case website === WEBSITES.REDDIT:
+            Component = () => (
+                <Reddit
+                    handleLoadMore={handleLoadMore}
+                    expand={expand}
+                    posts={posts}
+                    handleSetPage={handleSetPage}
+                    currentPage={currentPage}
+                    handleSetSubreddit={handleSetSubreddit}
+                />
+            );
+            break;
+        case website === WEBSITES.YOUTUBE:
+            Component = () => (
+                <Youtube
+                    handleLoadMore={handleLoadMore}
+                    expand={expand}
+                    posts={posts}
+                    handleSetPage={handleSetPage}
+                    currentPage={currentPage}
+                />
+            );
+            break;
 
-    default:
-      break;
-  }
-  return (
-    <React.Fragment>
-      <Component />
-    </React.Fragment>
-  );
+        default:
+            break;
+    }
+    return (
+        <React.Fragment>
+            <Component />
+        </React.Fragment>
+    );
 }
 
 export default PreviewsContainer;
